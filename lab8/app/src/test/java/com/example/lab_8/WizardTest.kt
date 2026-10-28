@@ -47,4 +47,20 @@ class WizardTest {
         assertEquals(70, evilWizard.mana)
     }
 
+    @Test
+    fun train_sufficientMana() {
+        evilWizard.train()
+        assertEquals(25, evilWizard.mana)       // 30 - 5 = 25
+        assertEquals(11, evilWizard.spellPower) // 10 + 1 = 11
+    }
+
+    @Test
+    fun train_insufficientMana() {
+        evilWizard.mana = 4
+        val initialSpellPower = evilWizard.spellPower
+        evilWizard.train()
+        assertEquals(4, evilWizard.mana)
+        assertEquals(initialSpellPower, evilWizard.spellPower)
+    }
+
 }
